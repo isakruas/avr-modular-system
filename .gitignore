@@ -1,0 +1,27 @@
+# Ignore build files
+/build
+
+# Ignore temporary text files
+*~
+
+# Ignore backup files
+*.bak
+
+# Ignore log files
+*.log
+
+# Ignore object files
+*.o
+
+# Ignore compiled output files
+*.hex
+*.elf
+*.eep
+*.lss
+
+# Ignore IDE-specific configuration files
+.vscode/
+.idea/
+
+# Ignore debug output files
+*.dSYM/
