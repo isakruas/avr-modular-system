@@ -9,8 +9,10 @@
 #include <avr/io.h>
 
 /*
- * Function: setupModule1
- * Description: Configures module 1 by setting pin PA7 as an output.
+ * @brief Configures module 1 by setting pin PA7 as an output.
+ *
+ * This function sets up the necessary configurations for module 1
+ * by configuring pin PA7 as an output.
  */
 void setupModule1()
 {
@@ -18,8 +20,10 @@ void setupModule1()
 }
 
 /*
- * Function: executeModule1Function
- * Description: Executes the functionality of module 1 by toggling pin PA7.
+ * @brief Executes the functionality of module 1 by toggling pin PA7.
+ *
+ * This function executes the main functionality of module 1
+ * by toggling the state of pin PA7.
  */
 void executeModule1Function()
 {

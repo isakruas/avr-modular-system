@@ -17,10 +17,7 @@ USB
   - **/module1**: Files related to module 1.
   - **/module2**: Files related to module 2.
   - **main.c**: Main file with the `main` function.
-- **/include**: Contains the header files (.h) of the project.
   - **main.h**: Declaration of main functions.
-  - **module1.h**: Declaration of functions and variables of module 1.
-  - **module2.h**: Declaration of functions and variables of module 2.
 - **/build**: Directory to store the files generated during compilation.
 - **Makefile**: Configuration file for compiling and programming the firmware.
 

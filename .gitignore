@@ -1,6 +1,6 @@
 # Ignore build files
 /build
-
+/*/*/build
 # Ignore temporary text files
 *~
 
@@ -25,3 +25,6 @@
 
 # Ignore debug output files
 *.dSYM/
+
+# Ignore datasheet files
+/datasheets

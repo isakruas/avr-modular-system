@@ -5,19 +5,21 @@
 #define MODULE1_H
 
 /*
- * Declarations of functions and variables specific to module 1.
+ * Declarations of functions specific to module 1.
  */
 
 /*
- * Function declaration: setupModule1
- * Description: Configures module 1.
+ * @brief Configures module 1.
+ *
+ * This function sets up the necessary configurations for module 1.
  */
 void setupModule1();
 
 /*
- * Function declaration: executeModule1Function
- * Description: Executes the functionality of module 1.
+ * @brief Executes the functionality of module 1.
+ *
+ * This function executes the main functionality of module 1.
  */
 void executeModule1Function();
 
-#endif
+#endif // MODULE1_H

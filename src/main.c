@@ -7,7 +7,9 @@
 #include "main.h"
 
 /*
- * This function sets up the initial configurations for modules 1 and 2.
+ * @brief Sets up the initial configurations for modules 1 and 2.
+ *
+ * This function initializes the setup for both module 1 and module 2.
  */
 static inline void setup()
 {
@@ -16,7 +18,9 @@ static inline void setup()
 }
 
 /*
- * This function continuously executes the functions of module 1 and module 2
+ * @brief Continuously executes the functions of module 1 and module 2 with a delay of 1000 milliseconds between each execution.
+ *
+ * This function loops through the execution of module 1 and module 2 functions
  * with a delay of 1000 milliseconds between each execution.
  */
 static inline void loop()
@@ -28,7 +32,9 @@ static inline void loop()
 }
 
 /*
- * The main function initializes the setup and then continuously executes the loop.
+ * @brief The main function initializes the setup and then continuously executes the loop.
+ *
+ * @return This function does not return any value.
  */
 int main(void)
 {
