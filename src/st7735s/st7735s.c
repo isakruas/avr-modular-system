@@ -120,7 +120,11 @@ const ST7735S_Command initCommands[] PROGMEM = {
     {ST7735S_GAMCTRP1, 16, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, 10},
     {ST7735S_GAMCTRN1, 16, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, 10},
     {ST7735S_GCV, 1, {0xFC}, 10},
-    {ST7735S_SLPOUT, 0, {0}, 10}};
+    {ST7735S_SLPOUT, 0, {0}, 10},
+    {ST7735S_CASET, 4, {0x00, 0x00, 0x00, ST7735S_DISPLAY_WIDTH}, 120}, 
+    {ST7735S_RASET, 4, {0x00, 0x00, 0x00, ST7735S_DISPLAY_HEIGHT}, 120}, 
+    {ST7735S_RAMWR, 0, {0}, 120},
+    };
 
 /*
  * @brief Delays execution for the given number of milliseconds.
@@ -176,8 +180,8 @@ void ST7735S_InitDisplay()
         }
     }
 
-    // ST7735S_FillScreenWithColor(0x0000); // Clear screen with color
-    // _delay_ms(120);
+    ST7735S_FillScreenWithColor(0x0000); // Clear screen with color
+    _delay_ms(120);
 }
 
 /*
@@ -321,7 +325,7 @@ void ST7735S_FillScreenWithColor(uint16_t color)
     ST7735S_SendData(ST7735S_DISPLAY_HEIGHT + ST7735S_DISPLAY_Y_OFFSET);
 
     ST7735S_SendCommand(ST7735S_RAMWR); // Memory write
-    for (int i = 0; i < (ST7735S_DISPLAY_WIDTH * ST7735S_DISPLAY_HEIGHT); i++)
+    for (uint32_t i = 0; i < ((uint32_t)ST7735S_DISPLAY_WIDTH * (uint32_t)ST7735S_DISPLAY_HEIGHT); i++)
     {
         ST7735S_SendData(color >> 8);   // Send the most significant byte of the color
         ST7735S_SendData(color & 0xFF); // Send the least significant byte of the color
