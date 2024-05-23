@@ -22,4 +22,4 @@ void setupModule1();
  */
 void executeModule1Function();
 
-#endif // MODULE1_H
+#endif  // MODULE1_H

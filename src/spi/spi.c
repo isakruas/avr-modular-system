@@ -6,10 +6,10 @@
 /*
  * @brief Initializes SPI communication as master.
  *
- * This function initializes SPI communication in master mode and sets up the corresponding pins.
+ * This function initializes SPI communication in master mode and sets up the
+ * corresponding pins.
  */
-void SPI_MasterInit(void)
-{
+void SPI_MasterInit(void) {
     /* Set MOSI and SCK output, all others input */
     DDR_SPI |= (1 << DD_MOSI) | (1 << DD_SCK);
 
@@ -22,10 +22,10 @@ void SPI_MasterInit(void)
  *
  * @param data The data byte to be transmitted.
  *
- * This function transmits a single byte of data via SPI communication in master mode.
+ * This function transmits a single byte of data via SPI communication in master
+ * mode.
  */
-void SPI_MasterTransmit(char data)
-{
+void SPI_MasterTransmit(char data) {
     /* Start transmission */
     SPDR = data;
     /* Wait for transmission complete */
@@ -36,10 +36,10 @@ void SPI_MasterTransmit(char data)
 /*
  * @brief Initializes SPI communication as slave.
  *
- * This function initializes SPI communication in slave mode and sets up the corresponding pins.
+ * This function initializes SPI communication in slave mode and sets up the
+ * corresponding pins.
  */
-void SPI_SlaveInit(void)
-{
+void SPI_SlaveInit(void) {
     /* Set MISO output, all others input */
     DDR_SPI = (1 << DD_MISO);
     /* Enable SPI */
@@ -51,10 +51,10 @@ void SPI_SlaveInit(void)
  *
  * @return The received data byte.
  *
- * This function receives a single byte of data via SPI communication in slave mode.
+ * This function receives a single byte of data via SPI communication in slave
+ * mode.
  */
-char SPI_SlaveReceive(void)
-{
+char SPI_SlaveReceive(void) {
     /* Wait for reception complete */
     while (!(SPSR & (1 << SPIF)))
         ;

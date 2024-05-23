@@ -43,9 +43,24 @@ static inline void loop() {
         "%&'()*+,-./"
         "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"
         "abcdefghijklmnopqrstuvwxyz{|}~";
-    uint16_t pos1 = ST77XX_DrawString(0, 0, fullAsciiString, 0xFFFF, 0x0000);
-    uint16_t pos2 = ST77XX_DrawString(pos1 & 0xFF, (pos1 >> 8) & 0xFF, fullAsciiString, 0xFFFF, 0x0000);
-    ST77XX_DrawString(pos2 & 0xFF, (pos2 >> 8) & 0xFF, fullAsciiString, 0xFFFF, 0x0000);
+
+    // Initial positions
+    uint16_t x = 0;
+    uint16_t y = 0;
+
+    // Number of times to draw the string
+    int numDraws = 13;
+
+    // Loop to draw the string multiple times
+    for (int i = 0; i < numDraws; i++) {
+        // Draw the string and get the new position
+        uint16_t pos = ST77XX_DrawString(x, y, fullAsciiString, 0xFFFF, 0x0000);
+
+        // Extract new x and y positions from the returned value
+        x = pos & 0xFF;
+        y = (pos >> 8) & 0xFF;
+    }
+
     _delay_ms(1000);
 
     // Clear the screen again
@@ -61,10 +76,10 @@ static inline void loop() {
                        counterString);  // Call the function to convert the counter to a string
 
     // Draw the "Hello, world!" string
-    ST77XX_DrawString(0, 0, helloWorldString, 0xFFFF, 0x0000);
+    ST77XX_DrawString(90, 10, helloWorldString, 0xFFFF, 0x0000);
 
     // Draw the counter string
-    ST77XX_DrawString(6 * 6, 8 * 8, counterString, 0xFFFF, 0x0000);
+    ST77XX_DrawString(120, 120, counterString, 0xFFFF, 0x0000);
 
     // Increment the counter
     counter++;

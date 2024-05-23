@@ -8,6 +8,7 @@
  * Include the necessary header files for modules
  */
 #include <avr/io.h>
+
 #include "module1/module1.h"
 #include "module2/module2.h"
 
@@ -23,4 +24,4 @@ static inline void setup();
  */
 static inline void loop();
 
-#endif // MAIN_H
+#endif  // MAIN_H

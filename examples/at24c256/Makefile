@@ -51,6 +51,12 @@ flash: build/$(TARGET).hex
 # Defines rules that do not correspond to real file names as "phony"
 .PHONY: all clean flash
 
+# Option for code formatting: You can use clang-format for automatic code formatting.
+# To install clang-format, use the following command:
+# sudo apt-get install clang-format
+format:
+	find . -name '*.c' -o -name '*.h' | xargs clang-format -i
+
 # Defines "all" as the default rule
 .DEFAULT_GOAL := all
 

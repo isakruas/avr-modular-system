@@ -7,10 +7,10 @@ TARGET = main
 # Compiler and flags
 CC = avr-g++
 CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
-INC_DIRS = -I./src/module1 -I./src/module2
+INC_DIRS = -I../../src/i2c -I../../src/pcf8574
 
 # Source files
-SRCS = src/main.c src/module1/module1.c src/module2/module2.c
+SRCS = src/main.c ../../src/i2c/i2c.c ../../src/pcf8574/pcf8574.c
 
 # Objects
 OBJ_DIR = build/obj
@@ -55,7 +55,7 @@ format:
 	find . -name '*.c' -o -name '*.h' | xargs clang-format -i
 
 # Defines rules that do not correspond to real file names as "phony"
-.PHONY: all clean flash format
+.PHONY: all clean flash
 
 # Defines "all" as the default rule
 .DEFAULT_GOAL := all

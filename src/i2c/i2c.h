@@ -30,7 +30,8 @@ void I2C_Stop();
  *
  * @param data The byte of data to be transmitted.
  *
- * This function loads a byte of data into the TWI data register and waits until the transmission is complete.
+ * This function loads a byte of data into the TWI data register and waits until
+ * the transmission is complete.
  */
 void I2C_Write(uint8_t data);
 
@@ -39,7 +40,8 @@ void I2C_Write(uint8_t data);
  *
  * @return The received byte of data.
  *
- * This function reads a byte of data from the I2C bus and sends an acknowledgment after receiving it.
+ * This function reads a byte of data from the I2C bus and sends an
+ * acknowledgment after receiving it.
  */
 uint8_t I2C_ReadAck();
 
@@ -48,8 +50,9 @@ uint8_t I2C_ReadAck();
  *
  * @return The received byte of data.
  *
- * This function reads a byte of data from the I2C bus and sends a non-acknowledgment after receiving it.
+ * This function reads a byte of data from the I2C bus and sends a
+ * non-acknowledgment after receiving it.
  */
 uint8_t I2C_ReadNack();
 
-#endif // I2C_H
+#endif  // I2C_H
