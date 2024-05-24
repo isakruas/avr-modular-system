@@ -6,7 +6,7 @@
 /*
  * Include the I2C header file for I2C communication.
  */
-#include "../i2c/i2c.h"
+#include "../../protocols/i2c/i2c.h"
 
 /*
  * @brief Reads a byte from the PCF8574 device at the specified address.

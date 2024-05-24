@@ -7,10 +7,10 @@ TARGET = main
 # Compiler and flags
 CC = avr-g++
 CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
-INC_DIRS = -I../../src/spi -I../../src/st77xx
+INC_DIRS = -I../../src/protocols/spi -I../../src/modules/st77xx
 
 # Source files
-SRCS = src/main.c ../../src/spi/spi.c ../../src/st77xx/st77xx.c
+SRCS = src/main.c ../../src/protocols/spi/spi.c ../../src/modules/st77xx/st77xx.c
 
 # Objects
 OBJ_DIR = build/obj

@@ -10,7 +10,7 @@
 
 #include <avr/io.h>
 
-#include "../../src/st77xx/st77xx.h"
+#include "../../../src/modules/st77xx/st77xx.h"
 
 /**
  * @brief Converts an integer to a string representation.

@@ -9,7 +9,7 @@
  */
 #include <avr/io.h>
 
-#include "../../src/pcf8574/pcf8574.h"
+#include "../../../src/modules/pcf8574/pcf8574.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.

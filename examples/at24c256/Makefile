@@ -7,10 +7,10 @@ TARGET = main
 # Compiler and flags
 CC = avr-g++
 CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
-INC_DIRS = -I../../src/i2c -I../../src/at24c256
+INC_DIRS = -I../../src/protocols/i2c -I../../src/modules/at24c256
 
 # Source files
-SRCS = src/main.c ../../src/i2c/i2c.c ../../src/at24c256/at24c256.c
+SRCS = src/main.c ../../src/protocols/i2c/i2c.c ../../src/modules/at24c256/at24c256.c
 
 # Objects
 OBJ_DIR = build/obj

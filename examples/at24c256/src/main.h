@@ -9,7 +9,7 @@
  */
 #include <avr/io.h>
 
-#include "../../src/at24c256/at24c256.h"
+#include "../../../src/modules/at24c256/at24c256.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.

@@ -7,7 +7,7 @@
 
 #include <util/delay.h>
 
-#include "../i2c/i2c.h"
+#include "../../protocols/i2c/i2c.h"
 
 /**
  * @brief Writes a byte to the AT24C256 EEPROM.

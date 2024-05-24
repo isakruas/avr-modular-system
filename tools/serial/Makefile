@@ -1,52 +1,35 @@
-# Makefile for compiling and programming an AVR microcontroller
+# Makefile for compiling C code
 # -----------------------------------------------------------
 
 # Executable file name
 TARGET = main
 
 # Compiler and flags
-CC = avr-g++
-CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
-INC_DIRS = -I../../src/protocols/spi -I../../src/modules/st77xx
+CC = gcc
+CFLAGS = -pthread
+INC_DIRS = -I./src/tty
 
 # Source files
-SRCS = src/main.c ../../src/protocols/spi/spi.c ../../src/modules/st77xx/st77xx.c
+SRCS = src/main.c src/tty/tty.c
 
 # Objects
 OBJ_DIR = build/obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
-# Programming commands
-AVRDUDE = avrdude
-AVRDUDE_PROGRAMMER = -c usbasp 
-AVRDUDE_PORT = -P usb 
-AVRDUDE_MCU = atmega32a
-AVRDUDE_FUSES = -U lfuse:w:0xFF:m -U hfuse:w:0xC9:m -U efuse:w:0xFF:m
-AVRDUDE_FLAGS = $(AVRDUDE_PROGRAMMER) $(AVRDUDE_PORT) -p $(AVRDUDE_MCU)
-
-# Rules
-all: build/$(TARGET).hex
-
-# Compilation of firmware into hexadecimal format
-build/$(TARGET).hex: build/$(TARGET).elf
-	avr-objcopy -O ihex -R .eeprom $< $@
-
-# Generation of ELF file from compiled objects
-build/$(TARGET).elf: $(OBJS)
-	$(CC) $(CFLAGS) $(INC_DIRS) -o $@ $^
+all: $(TARGET)
 
 # Compilation of source files into objects
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INC_DIRS) -c $< -o $@
 
+# Linking objects into the executable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INC_DIRS) -o $@ $^
+
 # Cleaning generated files
 clean:
 	rm -rf build
-
-# Programming firmware into microcontroller
-flash: build/$(TARGET).hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_FUSES) -U flash:w:$<
 
 # Option for code formatting: You can use clang-format for automatic code formatting.
 # To install clang-format, use the following command:
@@ -55,15 +38,7 @@ format:
 	find . -name '*.c' -o -name '*.h' | xargs clang-format -i
 
 # Defines rules that do not correspond to real file names as "phony"
-.PHONY: all clean flash
-
-# Defines "all" as the default rule
-.DEFAULT_GOAL := all
-
-# Install dependencies
-install-dependencies:
-	@echo "Please run the following command to install dependencies:"
-	@echo "sudo apt-get install gcc-avr avrdude avr-libc"
+.PHONY: all clean format
 
 # MIT License
 # -----------

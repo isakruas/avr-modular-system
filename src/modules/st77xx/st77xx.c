@@ -178,7 +178,7 @@ void ST77XX_InitDisplay() {
         }
     }
 
-    ST77XX_FillScreenWithColor(0x0000);  // Clear screen with color
+    // ST77XX_FillScreenWithColor(0x0000);  // Clear screen with color
     _delay_ms(120);
 }
 

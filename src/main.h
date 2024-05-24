@@ -9,8 +9,8 @@
  */
 #include <avr/io.h>
 
-#include "module1/module1.h"
-#include "module2/module2.h"
+#include "modules/module1/module1.h"
+#include "modules/module2/module2.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.

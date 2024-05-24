@@ -8,17 +8,7 @@
  * Include the necessary header files for modules
  */
 
-#include <avr/io.h>
-
-#include "../../../src/modules/st77xx/st77xx.h"
-
-/**
- * @brief Converts an integer to a string representation.
- *
- * @param number The integer number to convert.
- * @param stringBuffer The buffer to store the string representation.
- */
-void convertIntToString(int number, char *stringBuffer);
+#include "../../src/uart/uart.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.
