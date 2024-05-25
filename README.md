@@ -13,13 +13,14 @@ USBasp
 USB
 
 ## Project Structure
-- **/src**: Contains the source files of the project.
-  - **/module1**: Files related to module 1.
-  - **/module2**: Files related to module 2.
-  - **main.c**: Main file with the `main` function.
-  - **main.h**: Declaration of main functions.
 - **/build**: Directory to store the files generated during compilation.
+- **/examples**: Examples demonstrating the usage of the firmware.
+- **/src**: Contains the source files of the project, organized into subdirectories:
+  - **/modules**: Files related to the project modules.
+  - **/protocols**: Implementations of communication protocols.
+- **/tools**: Additional tools for the project.
 - **Makefile**: Configuration file for compiling and programming the firmware.
+
 
 ## Compilation and Usage Instructions
 1. Make sure you have the AVR GNU Toolchain installed on your system.

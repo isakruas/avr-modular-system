@@ -29,9 +29,9 @@ static inline void setup() {
  * buffer contents over UART.
  */
 static inline void loop() {
-    uint8_t cmd;
+    unsigned cmd;
     unsigned char buffer[BUFFER_SIZE]; 
-    uint16_t i;
+    uint8_t i;
     while (1) {
         cmd = UART_Receive();
         if (cmd == 'U') { 
