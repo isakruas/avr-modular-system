@@ -7,10 +7,10 @@ TARGET = main
 # Compiler and flags
 CC = avr-g++
 CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
-INC_DIRS = -I../../src/uart 
+INC_DIRS = -I../../src/protocols/uart
 
 # Source files
-SRCS = src/main.c ../../src/uart/uart.c
+SRCS = src/main.c ../../src/protocols/uart/uart.c 
 
 # Objects
 OBJ_DIR = build/obj

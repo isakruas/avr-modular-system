@@ -15,10 +15,9 @@ typedef struct {
  * @param arg A pointer to any additional arguments passed to the thread.
  * @return A pointer to the thread exit status.
  */
-
 void *read_thread_func(void *arg) {
     SerialData *serial_data = (SerialData *)arg;
-    char buf[1000];
+    char buf[100];
     while (1) {
         int n = read(serial_data->fd, buf, sizeof(buf) - 1);
         if (n > 0) {
@@ -65,9 +64,16 @@ void *write_thread_func(void *arg) {
  * @param argv An array of strings containing the command-line arguments.
  * @return The exit status of the program.
  */
-
 int main(int argc, char *argv[]) {
-    char *portname = (argc > 1) ? argv[1] : "/dev/ttyUSB0";  // Default port or argument
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <port> [mode]\n", argv[0]);
+        fprintf(stderr, "Mode (optional): read, write, both (default: both)\n");
+        return 1;
+    }
+    
+    // char *portname = (argc > 1) ? argv[1] : "/dev/ttyUSB0";  // Default port or argument
+    char *portname = argv[1];
+    char *mode = (argc > 2) ? argv[2] : "both";  // Default to "both" if mode is not specified
     int fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
     if (fd < 0) {
         perror("open");
@@ -82,13 +88,24 @@ int main(int argc, char *argv[]) {
 
     // Create threads
     pthread_t read_thread, write_thread;
+    int read_thread_created = 0, write_thread_created = 0;
 
-    pthread_create(&read_thread, NULL, read_thread_func, &serial_data);
-    pthread_create(&write_thread, NULL, write_thread_func, &serial_data);
+    if (strcmp(mode, "read") == 0 || strcmp(mode, "both") == 0) {
+        pthread_create(&read_thread, NULL, read_thread_func, &serial_data);
+        read_thread_created = 1;
+    }
+    if (strcmp(mode, "write") == 0 || strcmp(mode, "both") == 0) {
+        pthread_create(&write_thread, NULL, write_thread_func, &serial_data);
+        write_thread_created = 1;
+    }
 
     // Wait for the threads to finish (although in our case they run indefinitely)
-    pthread_join(read_thread, NULL);
-    pthread_join(write_thread, NULL);
+    if (read_thread_created) {
+        pthread_join(read_thread, NULL);
+    }
+    if (write_thread_created) {
+        pthread_join(write_thread, NULL);
+    }
 
     // Close the serial port
     close(fd);

@@ -9,6 +9,9 @@ The `examples` directory showcases various example projects utilizing different 
 - **st7735s**: Example controlling ST7735S TFT display using SPI protocol.
 - **st7789**: Example controlling ST7789 TFT display using SPI protocol.
 
+
+**Note:** For using st77xx, you should adjust ST77XX_INVOFF and ST77XX_COLMOD as indicated in the datasheet for each model.
+
 ## Compilation Instructions
 
 1. Navigate to the example directory you want to compile.

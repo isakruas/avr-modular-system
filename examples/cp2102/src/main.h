@@ -7,8 +7,8 @@
 /*
  * Include the necessary header files for modules
  */
-
-#include "../../src/uart/uart.h"
+#include <util/delay.h>
+#include "../../../src/protocols/uart/uart.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.
