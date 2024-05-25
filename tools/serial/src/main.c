@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Mode (optional): read, write, both (default: both)\n");
         return 1;
     }
-    
+
     // char *portname = (argc > 1) ? argv[1] : "/dev/ttyUSB0";  // Default port or argument
     char *portname = argv[1];
     char *mode = (argc > 2) ? argv[2] : "both";  // Default to "both" if mode is not specified

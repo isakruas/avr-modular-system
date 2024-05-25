@@ -8,6 +8,7 @@
  * Include the necessary header files for modules
  */
 #include <util/delay.h>
+
 #include "../../../src/protocols/uart/uart.h"
 
 /*
