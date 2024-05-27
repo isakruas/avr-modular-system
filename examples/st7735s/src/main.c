@@ -12,6 +12,7 @@
  *
  */
 static inline void setup() {
+    ST77XX_Reset();
     ST77XX_InitDisplay();
     DDRA |= (1 << PA6) | (1 << PA7);
 }

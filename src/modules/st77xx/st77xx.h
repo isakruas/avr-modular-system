@@ -6,6 +6,10 @@
 
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 #include <util/delay.h>
 
 #include "glcdfont.h"
@@ -186,5 +190,165 @@ void ST77XX_FillScreenWithColor(uint16_t color);
  * @param ms The number of milliseconds to delay.
  */
 void ST77XX_DelayMs(uint16_t ms);
+
+/*
+ * @brief Draw a line between two points on the display.
+ *
+ * @param x0 Starting x-coordinate.
+ * @param y0 Starting y-coordinate.
+ * @param x1 Ending x-coordinate.
+ * @param y1 Ending y-coordinate.
+ * @param color Color of the line.
+ */
+void ST77XX_DrawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color);
+
+/*
+ * @brief Draw a horizontal line on the display.
+ *
+ * @param x Starting x-coordinate.
+ * @param y Starting y-coordinate.
+ * @param w Width of the line.
+ * @param color Color of the line.
+ */
+void ST77XX_DrawHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
+
+/*
+ * @brief Draw a vertical line on the display.
+ *
+ * @param x Starting x-coordinate.
+ * @param y Starting y-coordinate.
+ * @param h Height of the line.
+ * @param color Color of the line.
+ */
+void ST77XX_DrawVLine(int16_t x, int16_t y, int16_t h, uint16_t color);
+
+/*
+ * @brief Draw a diagonal line on the display.
+ *
+ * @param x0 Starting x-coordinate.
+ * @param y0 Starting y-coordinate.
+ * @param length Length of the line.
+ * @param angle Angle of the line in radians.
+ * @param color Color of the line.
+ */
+void ST77XX_DrawDLine(int16_t x0, int16_t y0, int16_t length, float angle, uint16_t color);
+
+/*
+ * @brief Draw a rectangle on the display.
+ *
+ * @param x Top-left x-coordinate.
+ * @param y Top-left y-coordinate.
+ * @param width Width of the rectangle.
+ * @param height Height of the rectangle.
+ * @param color Color of the rectangle.
+ */
+void ST77XX_DrawRect(int x, int y, int width, int height, uint16_t color);
+
+/*
+ * @brief Fill a rectangle on the display.
+ *
+ * @param x Top-left x-coordinate.
+ * @param y Top-left y-coordinate.
+ * @param width Width of the rectangle.
+ * @param height Height of the rectangle.
+ * @param color Color of the rectangle.
+ */
+void ST77XX_FillRect(int16_t x, int16_t y, int16_t width, int16_t height, uint16_t color);
+
+/*
+ * @brief Draw a circle on the display.
+ *
+ * @param x0 Center x-coordinate.
+ * @param y0 Center y-coordinate.
+ * @param r Radius of the circle.
+ * @param color Color of the circle.
+ */
+void ST77XX_DrawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+
+/*
+ * @brief Fill a circle on the display.
+ *
+ * @param x0 Center x-coordinate.
+ * @param y0 Center y-coordinate.
+ * @param r Radius of the circle.
+ * @param color Color of the circle.
+ */
+void ST77XX_FillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
+
+/*
+ * @brief Draw a polygon on the display.
+ *
+ * @param x Array of x-coordinates for each vertex.
+ * @param y Array of y-coordinates for each vertex.
+ * @param num_sides Number of sides (or vertices) of the polygon.
+ * @param color Color of the polygon.
+ */
+void ST77XX_DrawPolygon(int16_t *x, int16_t *y, uint16_t num_sides, uint16_t color);
+
+/*
+ * @brief Fill a polygon on the display.
+ *
+ * @param x Array of x-coordinates for each vertex.
+ * @param y Array of y-coordinates for each vertex.
+ * @param num_sides Number of sides (or vertices) of the polygon.
+ * @param color Color of the polygon.
+ */
+void ST77XX_FillPolygon(int16_t *x, int16_t *y, uint16_t num_sides, uint16_t color);
+
+/*
+ * @brief Draw a triangle on the display.
+ *
+ * @param x0 x-coordinate of the first vertex.
+ * @param y0 y-coordinate of the first vertex.
+ * @param x1 x-coordinate of the second vertex.
+ * @param y1 y-coordinate of the second vertex.
+ * @param x2 x-coordinate of the third vertex.
+ * @param y2 y-coordinate of the third vertex.
+ * @param color Color of the triangle.
+ */
+void ST77XX_DrawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
+
+/*
+ * @brief Fill a triangle on the display.
+ *
+ * @param x0 x-coordinate of the first vertex.
+ * @param y0 y-coordinate of the first vertex.
+ * @param x1 x-coordinate of the second vertex.
+ * @param y1 y-coordinate of the second vertex.
+ * @param x2 x-coordinate of the third vertex.
+ * @param y2 y-coordinate of the third vertex.
+ * @param color Color of the triangle.
+ */
+void ST77XX_FillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
+
+/*
+ * @brief Fills the button with the border color and draws the text at the center of the button.
+ *
+ * @param x The x-coordinate of the top-left corner of the button.
+ * @param y The y-coordinate of the top-left corner of the button.
+ * @param width The width of the button.
+ * @param height The height of the button.
+ * @param borderColor The color of the button's border.
+ * @param textColor The color of the button's text.
+ * @param label The text to be displayed on the button.
+ */
+void ST77XX_FillButtonWithText(int16_t x, int16_t y, int16_t width, int16_t height, uint16_t borderColor,
+                               int16_t textColor, char *label);
+
+/*
+ * @brief Draws the button's outline with the border color, fills the background with the background color, and draws
+ * the text at the center of the button.
+ *
+ * @param x The x-coordinate of the top-left corner of the button.
+ * @param y The y-coordinate of the top-left corner of the button.
+ * @param width The width of the button.
+ * @param height The height of the button.
+ * @param borderColor The color of the button's border.
+ * @param textColor The color of the button's text.
+ * @param backgroundColor The background color of the button.
+ * @param label The text to be displayed on the button.
+ */
+void ST77XX_DrawButtonWithText(int16_t x, int16_t y, int16_t width, int16_t height, uint16_t borderColor,
+                               int16_t textColor, int16_t backgroundColor, char *label);
 
 #endif  // ST77XX_H
