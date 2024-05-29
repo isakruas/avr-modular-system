@@ -83,7 +83,7 @@ void send_command(GtkWidget *widget, gpointer data) {
     configure_serial_port(baudrate);
 
     write(serial_port, command, strlen(command));
-    write(serial_port, "\r\n", 2);
+    // write(serial_port, "\r\n", 2);
 
     GtkTextIter iter;
     gtk_text_buffer_get_end_iter(text_buffer, &iter);
