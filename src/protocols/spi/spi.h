@@ -36,12 +36,13 @@
 #define DD_SCK PB7
 
 /*
- * @brief Initializes SPI communication as master.
+ * @brief Initializes SPI communication as master with a given clock preescaler.
  *
- * This function initializes SPI communication in master mode and sets up the
- * corresponding pins.
+ * @param prescaler An integer indicating the desired SPI clock prescaler. The valid values are
+ *        2, 4, 8, 16, 32, 64, and 128. If an invalid value is provided or zero, the default value
+ *        of 4 will be used.
  */
-void SPI_MasterInit(void);
+void SPI_MasterInit(uint8_t prescaler);
 
 /*
  * @brief Transmits data via SPI communication as master.
