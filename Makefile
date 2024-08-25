@@ -6,7 +6,7 @@ TARGET = main
 
 # Compiler and flags
 CC = avr-g++
-CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
+CFLAGS = -Os -mmcu=atmega32a -DF_CPU=16000000UL
 INC_DIRS = -I./src/modules/module1 -I./src/modules/module2
 
 # Source files

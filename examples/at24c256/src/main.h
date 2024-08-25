@@ -10,6 +10,7 @@
 #include <avr/io.h>
 
 #include "../../../src/modules/at24c256/at24c256.h"
+#include "../../../src/protocols/i2c/i2c.h"
 
 /*
  * @brief Sets up the initial configurations for the microcontroller.

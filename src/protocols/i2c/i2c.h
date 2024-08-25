@@ -6,10 +6,12 @@
 /**
  * @brief Initializes the I2C (TWI) interface.
  *
- * This function sets up the I2C interface with a clock frequency of 100kHz.
- * It sets the TWI status register and TWI bit rate register accordingly.
+ * This function sets up the I2C interface with a clock frequency
+ * determined by the prescaler value passed.
+ *
+ * @param prescaler The desired prescaler value (0 for 1, 1 for 4, 2 for 16, 3 for 64).
  */
-void I2C_Init();
+void I2C_Init(uint8_t prescaler);
 
 /**
  * @brief Sends a START condition on the I2C bus.

@@ -71,7 +71,8 @@ void SPI_MasterTransmit(char data) {
     /* Start transmission */
     SPDR = data;
     /* Wait for transmission complete */
-    while (!(SPSR & (1 << SPIF)));
+    while (!(SPSR & (1 << SPIF)))
+        ;
 }
 
 /*
@@ -97,7 +98,8 @@ void SPI_SlaveInit(void) {
  */
 char SPI_SlaveReceive(void) {
     /* Wait for reception complete */
-    while (!(SPSR & (1 << SPIF)));
+    while (!(SPSR & (1 << SPIF)))
+        ;
     /* Return data register */
     return SPDR;
 }

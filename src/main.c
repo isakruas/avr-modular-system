@@ -1,7 +1,7 @@
 /*
- * Define the CPU frequency as 8MHz (8000000Hz).
+ * Define the CPU frequency as 16MHz (16000000Hz).
  */
-#define F_CPU 8000000UL
+#define F_CPU 16000000UL
 
 #include "main.h"
 

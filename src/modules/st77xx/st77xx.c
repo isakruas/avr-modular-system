@@ -155,7 +155,7 @@ void ST77XX_InitDisplay() {
     // Turn on backlight
     ST77XX_PORT |= (1 << ST77XX_DD_BLK);
 
-    SPI_MasterInit(0);  // Initialize SPI
+    SPI_MasterInit(2);  // Initialize SPI
 
     // Iterate through the initCommands array stored in PROGMEM
     for (uint8_t i = 0; i < sizeof(initCommands) / sizeof(ST77XX_Command); i++) {

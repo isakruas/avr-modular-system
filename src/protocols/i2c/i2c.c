@@ -1,8 +1,3 @@
-/*
- * Define the CPU frequency as 8MHz (8000000Hz).
- */
-#define F_CPU 8000000UL
-
 #include "i2c.h"
 
 #include <compat/twi.h>
@@ -11,13 +6,40 @@
 /**
  * @brief Initializes the I2C (TWI) interface.
  *
- * This function sets up the I2C interface with a clock frequency of 100kHz.
- * It sets the TWI status register and TWI bit rate register accordingly.
+ * This function sets up the I2C interface with a clock frequency
+ * determined by the prescaler value passed.
+ *
+ * @param prescaler The desired prescaler value (0 for 1, 1 for 4, 2 for 16, 3 for 64).
  */
-void I2C_Init() {
-    TWSR = 0;                              // Prescaler value = 1
-    TWBR = ((F_CPU / 100000UL) - 16) / 2;  // Set bit rate for 100kHz with prescaler of 1
-    TWCR = (1 << TWEN);                    // Enable TWI
+void I2C_Init(uint8_t prescaler) {
+    // Set the prescaler bits in TWSR
+    TWSR = (prescaler & 0x03);  // Mask to ensure only the lower 2 bits are used
+
+    // Calculate and set the TWBR value for the corresponding frequency
+    uint32_t frequency;
+    switch (prescaler) {
+        case 0:                    // Prescaler = 1
+            frequency = 100000UL;  // 100kHz
+            break;
+        case 1:                    // Prescaler = 4
+            frequency = 400000UL;  // 400kHz
+            break;
+        case 2:                   // Prescaler = 16
+            frequency = 50000UL;  // 50kHz
+            break;
+        case 3:                   // Prescaler = 64
+            frequency = 25000UL;  // 25kHz
+            break;
+        default:
+            frequency = 100000UL;  // Default to 100kHz if an invalid prescaler is passed
+            break;
+    }
+
+    // Calculate the TWBR value for the desired frequency
+    TWBR = ((F_CPU / frequency) - 16) / 2;
+
+    // Enable TWI
+    TWCR = (1 << TWEN);
 }
 
 /**

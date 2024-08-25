@@ -1,7 +1,7 @@
 /*
- * Define the CPU frequency as 8MHz (8000000Hz).
+ * Define the CPU frequency as 16MHz (16000000Hz).
  */
-#define F_CPU 8000000UL
+#define F_CPU 16000000UL
 
 #include "main.h"
 
@@ -20,6 +20,9 @@ uint8_t readBuffer[EEPROM_PAGE_SIZE] = {0};   // Data read from the EEPROM
  * initial data to the EEPROM, and prepares data for page writing to the EEPROM.
  */
 static inline void setup() {
+    // Initializes the I2C bus as a master and sets the specified clock frequency
+    I2C_Init(1);
+
     // Set PA6 and PA7 as output pins
     DDRA |= (1 << PA6) | (1 << PA7);
 

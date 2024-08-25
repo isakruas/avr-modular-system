@@ -6,7 +6,7 @@ TARGET = main
 
 # Compiler and flags
 CC = avr-g++
-CFLAGS = -Os -mmcu=atmega32a -DF_CPU=8000000UL
+CFLAGS = -Os -mmcu=atmega32a -DF_CPU=16000000UL
 INC_DIRS = -I../../src/protocols/spi -I../../src/modules/st77xx
 
 # Source files

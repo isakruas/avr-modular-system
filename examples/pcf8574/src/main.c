@@ -1,7 +1,7 @@
 /*
- * Define the CPU frequency as 8MHz (8000000Hz).
+ * Define the CPU frequency as 16MHz (16000000Hz).
  */
-#define F_CPU 8000000UL
+#define F_CPU 16000000UL
 
 #include "main.h"
 
@@ -14,7 +14,10 @@
  *
  * In this function, you can perform any initialization required for the microcontroller.
  */
-static inline void setup() {}
+static inline void setup() {
+    // Initializes the I2C bus as a master and sets the specified clock frequency
+    I2C_Init(1);
+}
 
 /**
  * @brief Continuously executes the main functionality of the program.
@@ -25,6 +28,7 @@ static inline void setup() {}
 static inline void loop() {
     // Turns on the LED connected to pin P0
     PCF8574_WritePin(PCF8574_ADDRESS, 0, 1);
+
     _delay_ms(1000);
 
     // Reads the state of pin P0
